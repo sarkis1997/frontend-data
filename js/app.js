@@ -1,4 +1,8 @@
 import { url_NMVW07, herkomst } from './utils/queries.js';
-import { fetchData } from './utils/fetchData.js';
+import { mapData } from './utils/fetchData.js';
+import { createSVG, createCircles } from './utils/d3Functions.js';
 
-console.log(fetchData(url_NMVW07, herkomst));
+			createSVG('.chart',1000, 750)
+
+
+mapData(url_NMVW07, herkomst);
