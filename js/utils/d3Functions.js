@@ -14,6 +14,7 @@ export function createCircles(findSelector, searchSelector, data) {
 	d3.select(findSelector).selectAll(searchSelector)
 		.data(data)
 		.enter()
+		.append("g")
 		.append("circle")
 		.attr("class", ".circle")
 }

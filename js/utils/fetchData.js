@@ -7,7 +7,7 @@ function fetchData(url, query) {
 			})
 }
 
-export let mapData = function(url, query) {
+export function mapData(url, query) {
 	return fetchData(url, query)
 		.then(
 			// result is the promiseValue Array
@@ -22,6 +22,9 @@ export let mapData = function(url, query) {
 							qty
 						}
 					}
-				)
+					)
 			})
-};
+}
+
+
+
