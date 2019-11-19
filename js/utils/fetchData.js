@@ -7,13 +7,13 @@ function fetchData(url, query) {
 			})
 }
 
-export function mapData(url, query) {
+export let mapData = function(url, query) {
 	return fetchData(url, query)
 		.then(
 			// result is the promiseValue Array
 			result => {
 				//mapping through the array and returning for each item the geoName and qty
-				result.map(
+				return result.map(
 					item => {
 						let geoName = item.herkomstSuperLabel.value;
 						let qty = item.choCount.value;
@@ -24,4 +24,4 @@ export function mapData(url, query) {
 					}
 				)
 			})
-}
+};

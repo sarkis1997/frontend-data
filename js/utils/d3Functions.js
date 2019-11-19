@@ -1,4 +1,6 @@
 export function createSVG(selector, width, height) {
+	//select a element and append things to it
+	//parameters are selector, width and height, so the function can be re-used.
 	d3.select(selector)
 		.append("svg")
 		.attr("width", width)
@@ -8,8 +10,8 @@ export function createSVG(selector, width, height) {
 		.attr("transform", "translate(" + width / 2.5 + ", " + height / 4 + ")");
 }
 
-export function createCircles(data) {
-	d3.select('.groupCircles').selectAll('.groupCircles')
+export function createCircles(findSelector, searchSelector, data) {
+	d3.select(findSelector).selectAll(searchSelector)
 		.data(data)
 		.enter()
 		.append("circle")
