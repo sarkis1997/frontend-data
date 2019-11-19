@@ -5,12 +5,9 @@ import { createSVG, createCircles } from './utils/d3Functions.js';
 function createViz(url, query) {
 	createSVG('.chart',1000, 750);
 
-
 	mapData(url, query).then(data => {
 		createCircles('.groupCircles', '.circle', data)
 	})
-
-
 
 }
 
