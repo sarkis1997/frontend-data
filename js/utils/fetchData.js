@@ -1,6 +1,4 @@
-//function for fetching complete data with query
-import { url_NMVW07, herkomst } from './queries.js';
-
+//function for fetching complete dataset with query
 function fetchData(url, query) {
 	return fetch(url+"?query="+ encodeURIComponent(query) +"&format=json")
 		.then(response => response.json(response))
@@ -36,7 +34,7 @@ export function mapDataQty(url, query) {
 		.then(
 			// result is the promiseValue Array
 			data => {
-				//mapping through the array and returning for each item the geoName and qty
+				//mapping through the array and returning for each item the qty
 				return data.map(
 					item => {
 						return item.choCount.value;
@@ -51,7 +49,7 @@ export function mapDataGeoName(url, query) {
 		.then(
 			// result is the promiseValue Array
 			data => {
-				//mapping through the array and returning for each item the geoName and qty
+				//mapping through the array and returning for each item the geoName
 				return data.map(
 					item => {
 						return item.geoName.value;
