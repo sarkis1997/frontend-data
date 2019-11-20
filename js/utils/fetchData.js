@@ -11,7 +11,7 @@ function fetchData(url, query) {
 }
 
 //function for mapping data objects into geoName and Qty and returning that as item
-function mapData(url, query) {
+export function mapData(url, query) {
 	return fetchData(url, query)
 		.then(
 			// result is the promiseValue Array
