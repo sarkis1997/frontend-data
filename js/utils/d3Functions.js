@@ -16,4 +16,6 @@ export function createCircles(findSelector, searchSelector, data) {
 		.enter()
 		.append("circle")
 		.attr("class", ".circle")
+		.attr("class", function(data, index){
+			return 'item'+index;})
 }
