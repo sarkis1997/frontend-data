@@ -1,14 +1,11 @@
-import { url_NMVW07, makeQuery } from './utils/queries.js';
-import { mapData, mapDataGeoName, mapDataQty } from './utils/fetchData.js';
-import { createGroupCircles,  } from './utils/d3Functions.js';
+import { url_NMVW07, makeQuery, URI } from './utils/queries.js';
+import { mapData } from './utils/fetchData.js';
+import { createGroupCircles } from './utils/d3Functions.js';
+import { addToList } from './utils/addToList.js'
 
 async function createViz(url, query) {
-
-	function radiusScale() {
-		return d3.scaleSqrt().domain([d3.min(qtyList), d3.max(qtyList)]).range([5, 50]);
-	}
-
 	createGroupCircles('.chart', 1000, 750, await mapData(url, query));
+	addToList(url, query)
 }
 
-//createViz(url_NMVW07, makeQuery(URI));
+createViz(url_NMVW07, makeQuery(URI));

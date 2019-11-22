@@ -1,6 +1,6 @@
-import { fetchData } from './fetchData.js'
+import { mapData } from './fetchData.js'
 export const url_NMVW07 = "https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-07/sparql";
-let URI = `https://hdl.handle.net/20.500.11840/termmaster2`;
+export let URI = `https://hdl.handle.net/20.500.11840/termmaster2`;
 
 export function makeQuery(URI) { return `
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -25,22 +25,20 @@ WHERE {
 }
 
 function checkURIchild(url, query) {
-	fetchData(url, query)
+	mapData(url, query)
 		.then(
 			data => {
-				if (data.length < 1) {
-					console.log('no children more')
-				} else {
-
 					data.forEach(
 						item => {
-							console.log(item)
-							URI = item.herkomstSuper.value;
-							item.children = fetchData(url, makeQuery(URI))
-						}
+							if (item.qty < 1) {
+								return
+							}
 
+							console.log(item)
+							URI = item.geoURI;
+							item.nestedGeo = mapData(url, makeQuery(URI))
+						}
 					)
-				}
 			}
 		)
 }

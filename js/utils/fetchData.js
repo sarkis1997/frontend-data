@@ -1,5 +1,5 @@
 //function for fetching complete dataset with query
-export function fetchData(url, query) {
+function fetchData(url, query) {
 	return fetch(url+"?query="+ encodeURIComponent(query) +"&format=json")
 		.then(response => response.json(response))
 		.then(
@@ -19,32 +19,17 @@ export function mapData(url, query) {
 				return data.map(
 					item => {
 						let geoName = item.herkomstSuperLabel.value;
+						let geoURI = item.herkomstSuper.value;
 						let qty = item.choCount.value;
 						return {
 							geoName,
+							geoURI,
 							qty
 						}
 					}
 					)
 			})
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // function to receive the geoName of each item
 export function mapDataGeoName(data) {
