@@ -6,7 +6,7 @@ import { changeColorOnQtyCircle, changeColorOnQtySidebar } from './changeColorOn
 export function createGroupCircles(selector, width, height, data) {
 	let geoName = mapDataGeoName(data);
 	let qty = mapDataQty(data);
-	let radiusScale = d3.scaleSqrt().domain([d3.min(qty), d3.max(qty)]).range([5, 30]);
+	let radiusScale = d3.scaleSqrt().domain([d3.min(qty), d3.max(qty)]).range([5, 35]);
 
 	let circles = d3.select(selector)
 		.append("g")
@@ -48,8 +48,8 @@ export function createGroupCircles(selector, width, height, data) {
 					return d.y
 				})
 		})
-			.force("x", d3.forceX(width / 2).strength(0.005))
-			.force("y", d3.forceY(width / 2).strength(0.005))
+			.force("x", d3.forceX(width / 2).strength(0.001))
+			.force("y", d3.forceY(width / 2).strength(0.001))
 			.force("collide", d3.forceCollide(function(d) {
 				return radiusScale(d.qty) + 3
 			}))

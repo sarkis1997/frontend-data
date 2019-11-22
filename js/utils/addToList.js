@@ -1,4 +1,6 @@
 import { mapData } from './fetchData.js'
+import { createViz } from '../app.js'
+import { url_NMVW07, makeQuery } from '../utils/queries.js';
 
 export function addToList(url, query) {
 	mapData(url, query)
@@ -6,10 +8,18 @@ export function addToList(url, query) {
 			data => {
 				data.forEach(item => {
 					let select = document.querySelector('#select');
+					select.addEventListener('change', checkSelection)
 					let option = document.createElement('option')
-					option.value = 's'
-					option.innerHTML = item.geoName
+					option.value = item.geoURI
+					option.innerHTML = item.geoName;
 					select.appendChild(option)
 				})
 			})
+}
+
+function checkSelection() {
+	var selectedURI = this.options[select.selectedIndex].value;
+	console.log(selectedURI)
+	document.querySelector('.chart').innerHTML = '';
+	createViz(url_NMVW07, makeQuery(selectedURI))
 }
