@@ -19,7 +19,5 @@ export function addToList(url, query) {
 
 function checkSelection() {
 	var selectedURI = this.options[select.selectedIndex].value;
-	console.log(selectedURI)
-	document.querySelector('.chart').innerHTML = '';
 	createViz(url_NMVW07, makeQuery(selectedURI))
 }

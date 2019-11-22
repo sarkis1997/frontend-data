@@ -48,3 +48,34 @@ export function mapDataQty(data) {
 			}
 		)
 }
+
+function checkURIchild(url, query) {
+	mapData(url, query)
+		.then(
+			data => {
+				console.log(data)
+				return data.map(
+					item => {
+						console.log(item)
+						return item.child = mapData(url, makeQuery(item.uri))
+							.then(
+								data => {
+									console.log(data)
+									return data.map(
+										item => {
+											console.log(item)
+											return item.child = mapData(url, makeQuery(item.uri))
+												.then(
+													data => {
+														console.log(data)
+														return data.map(
+															item => {
+																console.log(item)
+																return item.child = mapData(url, makeQuery(item.uri))
+															})
+													})
+										})
+								})
+					})
+			})
+}

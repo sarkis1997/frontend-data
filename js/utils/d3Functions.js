@@ -4,19 +4,20 @@ import { changeColorOnQtyCircle, changeColorOnQtySidebar } from './changeColorOn
 
 
 export function createGroupCircles(selector, width, height, data) {
-	let geoName = mapDataGeoName(data);
 	let qty = mapDataQty(data);
 	let radiusScale = d3.scaleSqrt().domain([d3.min(qty), d3.max(qty)]).range([5, 35]);
 
-	let circles = d3.select(selector)
-		.append("g")
-		.attr("class", "groupCircles")
-		.attr("transform", "translate(" + width / 2.5 + ", " + height / 4 + ")")
-		.selectAll('.circle')
+	d3.selectAll('circle')
+		.data(data)
+		.exit().remove();
 
+	let circles = d3.select(selector)
+
+		.selectAll('circle')
 		.data(data)
 		.enter()
 		.append("circle")
+		.attr("transform", "translate(" + width / 2.5 + ", " + height / 4 + ")")
 		.attr("class", function(data, index){
 			return 'item'+index;})
 		.attr("r", function(d) {
@@ -33,7 +34,7 @@ export function createGroupCircles(selector, width, height, data) {
 			} else {
 				document.querySelector('.sidebar h2').innerHTML = "Objects: " + d.qty;
 			}
-		});
+		})
 
 	// collection of forces
 	// where the circles will go and interact
@@ -53,5 +54,8 @@ export function createGroupCircles(selector, width, height, data) {
 			.force("collide", d3.forceCollide(function(d) {
 				return radiusScale(d.qty) + 3
 			}))
+
+	//circles.exit().remove()
+
 
 }
