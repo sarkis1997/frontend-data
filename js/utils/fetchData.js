@@ -4,7 +4,6 @@ function fetchData(url, query) {
 		.then(response => response.json(response))
 		.then(
 			data => {
-			//	console.log(data.results.bindings);
 				return data.results.bindings;
 			})
 }
@@ -47,35 +46,4 @@ export function mapDataQty(data) {
 				return item.qty;
 			}
 		)
-}
-
-function checkURIchild(url, query) {
-	mapData(url, query)
-		.then(
-			data => {
-				console.log(data)
-				return data.map(
-					item => {
-						console.log(item)
-						return item.child = mapData(url, makeQuery(item.uri))
-							.then(
-								data => {
-									console.log(data)
-									return data.map(
-										item => {
-											console.log(item)
-											return item.child = mapData(url, makeQuery(item.uri))
-												.then(
-													data => {
-														console.log(data)
-														return data.map(
-															item => {
-																console.log(item)
-																return item.child = mapData(url, makeQuery(item.uri))
-															})
-													})
-										})
-								})
-					})
-			})
 }

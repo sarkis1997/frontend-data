@@ -1,4 +1,3 @@
-import { mapData } from './fetchData.js'
 export const url_NMVW07 = "https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-07/sparql";
 export let URI = `https://hdl.handle.net/20.500.11840/termmaster2`;
 
@@ -23,33 +22,6 @@ WHERE {
 } GROUP BY ?herkomstSuper ?herkomstSuperLabel
 `
 }
-
-function checkURIchild(url, query) {
-	mapData(url, query)
-		.then(
-			data => {
-					data.forEach(
-						item => {
-							if (item.qty < 1) {
-								return
-							}
-
-							console.log(item)
-							URI = item.geoURI;
-							item.nestedGeo = mapData(url, makeQuery(URI))
-						}
-					)
-			}
-		)
-}
-
-
-
-
-checkURIchild(url_NMVW07, makeQuery(URI));
-
-
-
 
 
 

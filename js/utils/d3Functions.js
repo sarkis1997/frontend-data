@@ -1,4 +1,4 @@
-import { mapDataGeoName, mapDataQty } from "./fetchData.js";
+import { mapDataQty } from "./fetchData.js";
 import { changeColorOnQtyCircle, changeColorOnQtySidebar } from './changeColorOnQty.js';
 
 
@@ -34,11 +34,9 @@ export function createGroupCircles(selector, width, height, data) {
 			} else {
 				document.querySelector('.sidebar h2').innerHTML = "Objects: " + d.qty;
 			}
-		})
+		});
 
-	// collection of forces
-	// where the circles will go and interact
-		d3.forceSimulation()
+	d3.forceSimulation()
 			.nodes(data)
 			.on("tick", function() {
 			circles
@@ -48,14 +46,10 @@ export function createGroupCircles(selector, width, height, data) {
 				.attr("cy", function (d) {
 					return d.y
 				})
-		})
+			})
 			.force("x", d3.forceX(width / 2).strength(0.001))
 			.force("y", d3.forceY(width / 2).strength(0.001))
 			.force("collide", d3.forceCollide(function(d) {
 				return radiusScale(d.qty) + 3
 			}))
-
-	//circles.exit().remove()
-
-
 }
