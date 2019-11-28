@@ -87,7 +87,7 @@ To be more specific, I have fetched on geographical location starting on the top
 </details>
 
 ## Functional Programming
-[Go to code](https://github.com/sarkis1997/functional-programming/wiki/functional-programming)
+[Go to code](https://github.com/sarkis1997/frontend-data/wiki/functional-programming)
 
 ## License
 <a href="https://github.com/sarkis1997/functional-programming/blob/master/LICENSE">MIT</a> @ Sarkis Moeradjan
