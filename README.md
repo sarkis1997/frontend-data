@@ -9,7 +9,7 @@ Interactive data visualisation
 3. Open the complete file in your code editor of choice.
 
 ## The assignment
-The assignment was to make a data visualisation which uses real data that is fetched from a server. \
+The assignment was to make a interactive data visualisation which uses external data. \
 The visualisation should be made with D3 and plain HTML, CSS and JavaScript.
     
 ## Concept
@@ -27,6 +27,7 @@ This data visualisations brings better insight in the collection they own.
 * Circles that visualise the quantity of object with its size and color.
 * Click on circles to show its metadata in the sidebar.
 * Legend that shows what each color stands for.
+* IN PROGRESS (collapsable child nodes).
 
 ## API
 The API is a dataset of around 700.000 objects of the NMVW. 
