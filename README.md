@@ -17,7 +17,7 @@ I came with the idea to make something like a collapsible force layout (https://
 
 <img src="https://github.com/sarkis1997/functional-programming/blob/master/src/assets/concept.png">
 
-## target audience
+## Target audience
 This app is for the client.\
 The client knows what kind of objects they have and from where, but it's never been visualised.\
 This data visualisations brings better insight in the collection they own.
@@ -69,7 +69,7 @@ WHERE {
   
 </details>
 
-## Functional Programming
+## Functional programming
 [Go to code](https://github.com/sarkis1997/frontend-data/wiki/functional-programming)
 
 ## License
