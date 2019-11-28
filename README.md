@@ -42,46 +42,28 @@ To be more specific, I have fetched on geographical location starting on the top
   <summary>show</summary>
   
   ## Query for fetching the top geolocations and their object quantity
-  ```
-   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-   PREFIX dc: <http://purl.org/dc/elements/1.1/>
-   PREFIX dct: <http://purl.org/dc/terms/>
-   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-   PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-   SELECT ?herkomstSuper ?herkomstSuperLabel (COUNT(?cho) AS ?choCount) 
-   WHERE {
-     <https://hdl.handle.net/20.500.11840/termmaster2> skos:narrower ?herkomstSuper .
-     ?herkomstSuper skos:prefLabel ?herkomstSuperLabel .
+  THE `{URI}` is set dynamically
+  
+```javascript
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-     ?herkomstSuper skos:narrower* ?herkomstSub .
-     ?herkomstSub skos:prefLabel ?herkomstSubLabel .
+SELECT ?herkomstSuper ?herkomstSuperLabel (COUNT(?cho) AS ?choCount) 
+WHERE {
+  <${URI}> skos:narrower ?herkomstSuper .
+  ?herkomstSuper skos:prefLabel ?herkomstSuperLabel .
 
-     ?cho dct:spatial ?herkomstSub .
+  ?herkomstSuper skos:narrower* ?herkomstSub .
+  ?herkomstSub skos:prefLabel ?herkomstSubLabel .
 
-   } GROUP BY ?herkomstSuper ?herkomstSuperLabel
-  ```
-  ## Query for fetching the sub geolocations and their object quantity
-  ```
-  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-   PREFIX dc: <http://purl.org/dc/elements/1.1/>
-   PREFIX dct: <http://purl.org/dc/terms/>
-   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-   PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
-   SELECT ?herkomstSuper ?herkomstSuperLabel (COUNT(?cho) AS ?choCount) 
-   WHERE {
-     <https://hdl.handle.net/20.500.11840/termmaster8401> skos:narrower ?herkomstSuper .
-     ?herkomstSuper skos:prefLabel ?herkomstSuperLabel .
-
-     ?herkomstSuper skos:narrower* ?herkomstSub .
-     ?herkomstSub skos:prefLabel ?herkomstSubLabel .
-
-     ?cho dct:spatial ?herkomstSub .
-
-   } GROUP BY ?herkomstSuper ?herkomstSuperLabel
+  ?cho dct:spatial ?herkomstSub .
+  
+} GROUP BY ?herkomstSuper ?herkomstSuperLabel
   ```
   
 </details>
