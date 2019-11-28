@@ -70,9 +70,8 @@ WHERE {
   
 </details>
 
-## Interaction
-* Filtering by list choice
-* (IN PROGRESS) click on circle to show childs.
+## Update function
+Circles are created on execution of the `createGroupCircles` functions. On a new execution of this function the the old unnecessary circles are removed and instead are new circles, based on the passed data, created.
 
 ## Functional programming
 [Go to code](https://github.com/sarkis1997/frontend-data/wiki/functional-programming)
