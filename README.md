@@ -27,6 +27,7 @@ This data visualisations brings better insight in the collection they own.
 * Circles that visualise the quantity of object with its size and color.
 * Click on circles to show its metadata in the sidebar.
 * Legend that shows what each color stands for.
+* Filter and update visualisation by list choice.
 * IN PROGRESS (collapsable child nodes).
 
 ## API
@@ -68,6 +69,10 @@ WHERE {
   ```
   
 </details>
+
+## Interaction
+* Filtering by list choice
+* (IN PROGRESS) click on circle to show childs.
 
 ## Functional programming
 [Go to code](https://github.com/sarkis1997/frontend-data/wiki/functional-programming)
