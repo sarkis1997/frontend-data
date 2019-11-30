@@ -1,4 +1,3 @@
-//function for fetching complete dataset with query
 function fetchData(url, query) {
 	return fetch(url+"?query="+ encodeURIComponent(query) +"&format=json")
 		.then(response => response.json(response))
@@ -8,13 +7,10 @@ function fetchData(url, query) {
 			})
 }
 
-//function for mapping data objects into geoName and Qty and returning that as item
 export function mapData(url, query) {
 	return fetchData(url, query)
 		.then(
-			// result is the promiseValue Array
 			data => {
-				//mapping through the array and returning for each item the geoName and qty
 				return data.map(
 					item => {
 						let geoName = item.herkomstSuperLabel.value;
@@ -30,20 +26,37 @@ export function mapData(url, query) {
 			})
 }
 
-// function to receive the geoName of each item
-export function mapDataGeoName(data) {
-	return data.map(
-		item => {
-			return item.geoName;
-		}
-	)
-}
+export let links = [];
+export let nodes = [];
 
-// function to receive the qty name of each item
-export function mapDataQty(data) {
-		return data.map(
-			item => {
-				return item.qty;
+function createLinks(url, query) {
+	return mapData(url, query)
+		.then(
+			data => {
+				data.map(
+					item => {
+						nodes.push({id: item.geoName})
+						let parentNode = item.geoName;
+						let childNodes = mapData(url, makeQuery(item.geoURI))
+							.then(
+								data => {
+									return data.map(
+										item => {
+											nodes.push({id: item.geoName})
+											links.push({source: parentNode, target: item.geoName})
+										}
+									)
+								}
+							)
+					}
+				)
 			}
 		)
+
+	console.log(nodes)
 }
+
+import { url_NMVW07, makeQuery, URI } from './queries.js';
+
+createLinks(url_NMVW07, makeQuery(URI));
+
