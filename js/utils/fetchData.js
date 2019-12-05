@@ -26,13 +26,22 @@ export function mapData(url, query) {
 			})
 }
 
-export let links = [];
-export let nodes = [];
-
-function createLinks(url, query) {
+export function createNodes(url, query) {
 	return mapData(url, query)
 		.then(
 			data => {
+				return data.map(
+					item => {
+						return item
+					})
+			})
+}
+
+export function createLinks(url, query) {
+	return mapData(url, query)
+		.then(
+			data => {
+				console.log(data)
 				data.map(
 					item => {
 						nodes.push({id: item.geoName})
@@ -44,19 +53,10 @@ function createLinks(url, query) {
 										item => {
 											nodes.push({id: item.geoName})
 											links.push({source: parentNode, target: item.geoName})
-										}
-									)
-								}
-							)
-					}
-				)
-			}
-		)
-
-	console.log(nodes)
+										})
+								})
+					})
+			})
 }
 
-import { url_NMVW07, makeQuery, URI } from './queries.js';
-
-createLinks(url_NMVW07, makeQuery(URI));
 

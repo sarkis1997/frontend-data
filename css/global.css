@@ -51,3 +51,7 @@ svg {
 .legenda > div:nth-of-type(5) {
     background: #489558;
 }
+
+.link {
+    stroke: red;
+}
