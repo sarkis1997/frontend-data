@@ -20,6 +20,7 @@ I came with the idea to make something like a collapsible force layout (https://
 * Legend that shows what each color stands for.
 * Reset button to reset the visualisation.
 * Clickable nodes with toggle function.
+* Draggable nodes
 
 ## API
 The API is a dataset of around 700.000 objects of the NMVW. 
