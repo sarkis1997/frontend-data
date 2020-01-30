@@ -1,4 +1,5 @@
 # NMVW's collection origin
+<img src="https://github.com/sarkis1997/frontend-data/blob/master/media/screenshot_d3.png">
 
 ## Target audience
 This app is for the client.\
@@ -11,16 +12,14 @@ This data visualisations brings better insight in the collection they own.
 3. Open the complete file in your code editor of choice.
 
 ## Concept
-I came with the idea to make something like a collapsible force layout (https://bl.ocks.org/mbostock/1062288). The idea is to collect a type of collection and to show the geolocations of it. Each circle will stand for a continent and the size of it will stand for the amount. I've chosen for this style of data visualization, because I think that the interaction fits good in my concept. And it's also scalable. If I would like I could bring the whole collection in map. First I'll bring up the type of object and after the geolocation with the size. If the geolocation sublevel items, it will be clickable. On click the sublevels will be shown.
-
-<img src="https://github.com/sarkis1997/frontend-data/blob/master/media/screenshot_d3.png">
+I came with the idea to make something like a collapsible force layout (https://bl.ocks.org/mbostock/1062288). The idea is to collect a type of collection and to show the geolocations of it. Each circle will stand for a continent and the size of it will stand for the amount. I've chosen for this style of data visualization, because I think that the interaction fits good in my concept. And it's also scalable. If I would like I could bring the whole collection in map. First I'll bring up the type of object and after the geolocation with the size. If the geolocation sublevel items, it will be clickable. On click the sublevels will be shown. This way the user can see in a glance where most of the objects come from.
 
 ## Features
-* Sidebar which showes the geolocation name and the quantity of object that it contains.
-* Circles that visualise the quantity of object with its size and color.
-* Click on circles to show its metadata in the sidebar.
+* Circles that visualise the quantity of objects with its size and color.
+* Hover over circles to show its metadata.
 * Legend that shows what each color stands for.
-* IN PROGRESS (On click of parent node, show child nodes).
+* Reset button to reset the visualisation.
+* Clickable nodes with toggle function.
 
 ## API
 The API is a dataset of around 700.000 objects of the NMVW. 
