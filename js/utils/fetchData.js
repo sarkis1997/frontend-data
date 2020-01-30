@@ -1,3 +1,5 @@
+import { url_NMVW07, makeQuery, URI } from "./queries.js";
+
 function fetchData(url, query) {
 	return fetch(url+"?query="+ encodeURIComponent(query) +"&format=json")
 		.then(response => response.json(response))
@@ -16,47 +18,59 @@ export function mapData(url, query) {
 						let geoName = item.herkomstSuperLabel.value;
 						let geoURI = item.herkomstSuper.value;
 						let qty = item.choCount.value;
+						let clicked= item.clicked;
+						clicked = false;
 						return {
 							geoName,
 							geoURI,
-							qty
+							qty,
+							clicked
 						}
 					}
 					)
 			})
 }
 
-export function createNodes(url, query) {
-	return mapData(url, query)
+export async function createDataSet(url, query) {
+	let dataset = [];
+
+	await mapData(url, query)
 		.then(
 			data => {
-				return data.map(
-					item => {
-						return item
-					})
-			})
+				if (dataset == 0) {
+					dataset.push(data)
+					getChildren(data)
+				}
+			}
+		)
+
+	return dataset;
 }
 
-export function createLinks(url, query) {
-	return mapData(url, query)
-		.then(
-			data => {
-				console.log(data)
-				data.map(
-					item => {
-						nodes.push({id: item.geoName})
-						let parentNode = item.geoName;
-						let childNodes = mapData(url, makeQuery(item.geoURI))
-							.then(
-								data => {
-									return data.map(
-										item => {
-											nodes.push({id: item.geoName})
-											links.push({source: parentNode, target: item.geoName})
-										})
-								})
+function getChildren(data) {
+	data.map(item => {
+		if (item.qty == 0) {;
+			return
+		}
+
+		else if (item.qty > 0) {
+
+			item.children = [];
+			mapData(url_NMVW07, makeQuery(item.geoURI))
+				.then(
+					data => {
+						data.map(
+							x => item.children.push(x)
+						)
+						getChildren(data)
 					})
-			})
+		}
+	})
 }
+
+
+
+
+
 
 
