@@ -62,7 +62,7 @@ WHERE {
 </details>
 
 ## Update pattern
-[Go to 'Update pattern' wiki](https://github.com/sarkis1997/frontend-data/wiki/update-pattern)
+[Go to 'Update pattern' wiki](https://github.com/sarkis1997/frontend-data/wiki/Update-Pattern)
 
 ## Data transformation code
 [Go to 'Transforming data' wiki](https://github.com/sarkis1997/frontend-data/wiki/Transforming-data)
