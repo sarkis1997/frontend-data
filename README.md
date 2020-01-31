@@ -61,8 +61,11 @@ WHERE {
   
 </details>
 
+## Update pattern
+[Go to 'Update pattern' wiki](https://github.com/sarkis1997/frontend-data/wiki/update-pattern)
+
 ## Data transformation code
-[Go to code](https://github.com/sarkis1997/frontend-data/wiki/Transforming-data)
+[Go to 'Transforming data' wiki](https://github.com/sarkis1997/frontend-data/wiki/Transforming-data)
 
 ## License
 <a href="https://github.com/sarkis1997/frontend-data/blob/master/LICENSE">MIT</a> @ Sarkis Moeradjan
